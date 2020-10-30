@@ -25,12 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              ​"node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              ​"node_modules/popper.js/dist/umd/popper.js"​,
-              ​"node_modules/jquery/jquery.js"​,
-              ​"node_modules/bootstrap/dist/js/bootstrap.bundle.js"​
+              "node_modules/popper.js/dist/umd/popper.js",
+              "node_modules/jquery/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
             ]
           },
           "configurations": {
@@ -94,12 +94,12 @@
             ],
             "styles": [
               "src/styles.css",
-              ​"node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              ​"node_modules/popper.js/dist/umd/popper.js"​,
-              ​"node_modules/jquery/jquery.js"​,
-              ​"node_modules/bootstrap/dist/js/bootstrap.bundle.js"​
+              "node_modules/popper.js/dist/umd/popper.js",
+              "node_modules/jquery/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
             ]
           }
         },
@@ -129,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MiSegundaWeb"
+    }
+  },
+  "defaultProject": "MiSegundaWeb",
+  "cli": {
+    "analytics": "ce9e7a14-a8c4-4271-85cc-ed716da8ca55"
+  }
 }
