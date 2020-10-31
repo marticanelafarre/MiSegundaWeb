@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { IniciComponent } from './inici/inici.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { QuienessomosComponent } from './quienessomos/quienessomos.component';
+import { DetallMembreComponent } from './detall-membre/detall-membre.component';
+import { ElementMembreComponent } from './element-membre/element-membre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IniciComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    QuienessomosComponent,
+    DetallMembreComponent,
+    ElementMembreComponent
   ],
   imports: [
     BrowserModule,

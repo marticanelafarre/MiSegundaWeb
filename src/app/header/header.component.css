@@ -14,3 +14,10 @@ nav li{
   color: #00cc99;
   text-decoration: overline black;
 }
+
+.barra{
+  background: rgba(0,0,0,0.9);
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
