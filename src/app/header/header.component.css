@@ -9,6 +9,8 @@ nav li{
 }
 
 .navbar-brand{
-  padding-right: 700px;
-  padding-left: 30px;
+  padding-right: 60%;
+  padding-left: 5%;
+  color: #00cc99;
+  text-decoration: overline black;
 }
