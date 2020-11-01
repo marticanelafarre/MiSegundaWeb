@@ -1,8 +1,15 @@
-<div class="list-group">
-  <app-element-membre [miembro]="miembros[0]" (selectEvent)="informarMiembro($event)"></app-element-membre>
-  <app-element-membre [miembro]="miembros[1]" (selectEvent)="informarMiembro($event)"></app-element-membre>
-  <app-element-membre [miembro]="miembros[2]" (selectEvent)="informarMiembro($event)"></app-element-membre>
-  <app-element-membre [miembro]="miembros[3]" (selectEvent)="informarMiembro($event)"></app-element-membre>
-  <app-element-membre [miembro]="miembros[4]" (selectEvent)="informarMiembro($event)"></app-element-membre>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3><span class="theme_color">Lista</span> de Miembros:</h3>
+      <app-detall-membre (informarEvent)="cambiarMiembroSeleccionado($event)"></app-detall-membre>
+    </div>
 
+    <div class="col">
+      <h3><span class="theme_color">Ficha</span> del Miembro:</h3>
+      <app-detall-membre [miembro]="miembroSeleccionado"></app-detall-membre>
+    </div>
+  </div>
 </div>
+<br>
