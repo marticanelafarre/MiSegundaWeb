@@ -10,6 +10,10 @@ import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 import { DetallMembreComponent } from './detall-membre/detall-membre.component';
 import { ElementMembreComponent } from './element-membre/element-membre.component';
 import { ListaMiembrosComponent } from './lista-miembros/lista-miembros.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { CrearEventoComponent } from './crear-evento/crear-evento.component';
+import { EliminarEventosComponent } from './eliminar-eventos/eliminar-eventos.component';
+import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { ListaMiembrosComponent } from './lista-miembros/lista-miembros.componen
     QuienessomosComponent,
     DetallMembreComponent,
     ElementMembreComponent,
-    ListaMiembrosComponent
+    ListaMiembrosComponent,
+    EventosComponent,
+    CrearEventoComponent,
+    EliminarEventosComponent,
+    ModificarEventosComponent
   ],
   imports: [
     BrowserModule,

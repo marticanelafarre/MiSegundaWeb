@@ -23,47 +23,12 @@
 .llista {
   list-style: none;
 }
-.readmore_bt {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
-}
 
-.readmore_bt i {
-  color: #00cc99;
-  font-size: 25px;
-  position: relative;
-  top: 4px;
-  left: 2px;
-}
-.theme_color {
+
+.theme_color, .leer2 {
   color: #00cc99;
 }
 
-.navbar-toggler span + span {
-  margin-top: 5px;
-}
-.navbar-toggler:hover span {
-  background: #222;
-}
-
-.title-box h2 span {
-  color: #70c6eb;
-  text-decoration: underline;
-}
-
-.about-main-info h2 span {
-  color: #70c6eb;
-  text-decoration: underline;
-}
-
-.heading_main h2 span {
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.leer2{
-  color: #00cc99;
-}
 
 .main_bt{
   color: #00cc99;

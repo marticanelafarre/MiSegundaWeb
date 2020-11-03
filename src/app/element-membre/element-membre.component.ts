@@ -16,7 +16,7 @@ export class ElementMembreComponent implements OnInit {
   ngOnInit() {
   }
 
-  miembroSelected() {
+  miembroSelected(event) {
     this.selectEvent.emit(this.miembro);
   }
 
