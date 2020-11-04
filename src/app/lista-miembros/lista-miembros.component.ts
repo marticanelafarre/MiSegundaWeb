@@ -19,6 +19,7 @@ export class ListaMiembrosComponent implements OnInit {
     this.miembros[0].edad = 43;
     this.miembros[0].desc = 'Amable y divertido.';
 
+
     this.miembros[1].nombre = 'Mariano';
     this.miembros[1].apellidos = 'Rajoy Brey';
     this.miembros[1].edad = 65;

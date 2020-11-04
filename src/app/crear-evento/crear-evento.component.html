@@ -1,1 +1,39 @@
-<p>crear-evento works!</p>
+<br>
+<div class="container">
+  <div class="col">
+    <h3><span class="theme_color">Crear</span> Eventos:</h3>
+    <div class="form">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputnomevento">Nombre del evento:</label>
+            <input type="text" class="form-control" id="inputnomevento" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputcorreo">Correo:</label>
+            <input type="email" class="form-control" id="inputcorreo">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputubicacion">Ubicación:</label>
+          <input type="text" class="form-control" id="inputubicacion" placeholder="Av. Prat de la Riba, 2" required>
+        </div>
+        <div class="form-group">
+          <label for="inputdescripcion">Descripción</label>
+          <input type="text" class="form-control" id="inputdescripcion" placeholder="Escriba la descripción del evento"
+            minlength="2" required>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+            <label class="form-check-label" for="gridCheck">
+              He leído y acepto los términos y condiciones de Eventos S.L.
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-warning">Crear</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>

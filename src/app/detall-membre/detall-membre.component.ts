@@ -19,5 +19,4 @@ export class DetallMembreComponent implements OnInit {
     this.miembro.edad = 0;
     this.miembro.desc = '';
   }
-
 }
