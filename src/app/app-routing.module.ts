@@ -9,7 +9,7 @@ import { EliminarEventosComponent } from './eliminar-eventos/eliminar-eventos.co
 import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'inici'},
+  {path: '', pathMatch: 'full', redirectTo: 'inicio'},
   {path: 'header', component: HeaderComponent},
   {path: 'inicio', component: IniciComponent},
   {path: 'quienessomos', component: QuienessomosComponent},
