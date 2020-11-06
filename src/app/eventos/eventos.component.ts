@@ -1,18 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { EventGallery } from '../event-gallay';
 
 @Component({
-  selector: 'app-eventos',
+  selector: 'app-events',
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent implements OnInit {
 
-  accion: String
+  events: EventGallery[] = [];
+  accion: String;
+
+  public container: string;
+
+  public evento: string;
+  public descripcion: string;
+  public dia: string;
+  public mes: string;
+  public ubicacion: string;
+  public contacto: string;
+
+
 
   constructor() { }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
   }
 
   elegirAccion(event) {
@@ -28,5 +40,11 @@ export class EventosComponent implements OnInit {
     }
   }
 
+  enviarDatosAdd(event, descripcion, di, me, ubicacion, mail, check) {
+    if((event && ubicacion && mail && descripcion)){
+      this.events.push(new EventGallery(event, descripcion, di, me, ubicacion, mail ));
+    }
+
+  }
 
 }

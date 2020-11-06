@@ -1,3 +1,11 @@
 .theme_color {
   color: #00cc99;
 }
+
+.ban{
+  background-color: turquoise;
+}
+
+.boton{
+  padding: 20px;
+}

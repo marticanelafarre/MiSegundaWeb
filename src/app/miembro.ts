@@ -3,4 +3,5 @@ export class Miembro {
   public apellidos: string;
   public edad: number;
   public desc: string;
+  public img: string;
 }
