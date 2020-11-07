@@ -11,9 +11,6 @@ import { DetallMembreComponent } from './detall-membre/detall-membre.component';
 import { ElementMembreComponent } from './element-membre/element-membre.component';
 import { ListaMiembrosComponent } from './lista-miembros/lista-miembros.component';
 import { EventosComponent } from './eventos/eventos.component';
-import { CrearEventoComponent } from './crear-evento/crear-evento.component';
-import { EliminarEventosComponent } from './eliminar-eventos/eliminar-eventos.component';
-import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +23,6 @@ import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos
     ElementMembreComponent,
     ListaMiembrosComponent,
     EventosComponent,
-    CrearEventoComponent,
-    EliminarEventosComponent,
-    ModificarEventosComponent
   ],
   imports: [
     BrowserModule,

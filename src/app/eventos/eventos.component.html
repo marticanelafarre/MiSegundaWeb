@@ -1,283 +1,170 @@
-<section class="sec1">
-  <div class="container">
-    <h3><span class="theme_color">Eventos</span></h3>
-    <div class="ban" class="" *ngFor="let event of events">
-      <div class="col-md-12">
-        <div class="card mb-0">
-          <div class="card-body py-1">
-            <div class="row">
-              <div class="display-4 ">
-                <span class="badge">{{event.dia}}</span>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3><span class="theme_color">Eventos</span>: </h3>
+      <br><br>
+      <!-- Hacemos un bucle para printar los envetos que tenemos -->
+      <div class="ban" class="" *ngFor="let event of events">
+        <div class="form-group">
+          <div class="card mb-0">
+            <div class="col-7 col-sm-9">
+              <li class="list-inline-item"> <strong>Nombre del Evento: </strong></li>
+              <li class="list-inline-item">{{event.nombre}}</li>
+              <div>
+                <li class="list-inline-item"> <strong>Descripción:</strong></li>
+                <li class="list-inline-item">{{event.desc}}</li>
               </div>
-              <div class="display-4">
-                {{event.mes}}
+              <div>
+                <li class="list-inline-item"> <strong>Ubicacion:</strong></li>
+                <li class="list-inline-item">{{event.ubicacion}}</li>
+              </div>
+              <div>
+                <li class="list-inline-item"> <strong>correo:</strong></li>
+                <li class="list-inline-item">{{event.contacto}}</li>
               </div>
             </div>
-            <div class="col-7 col-sm-9">
-              <div class="d-flex flex-column">
-                <h3 class="card-title text-uppercase mt-0">
-                  <strong>{{event.nombreEvento}}</strong>
-                </h3>
-                <div class="card-text">
-                  {{event.descripcionEvento}}
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+<!-- Este es el menu de crear/modificar/editar -->
+    <div class="col">
+      <div class="container eventos">
+        <label class="radio boton">
+          <button type="button" name="button" value="crear" (click)="seleccionar($event)"
+            class="btn btn-warning ">Crear</button> <!-- En caso de darle a Crear se hace la accion "seleccionar" y pasara directamente a los ngif -->
+        </label>
+        <label class="custom-radio boton">
+          <button type="button" name="button" value="modificar" (click)="seleccionar($event)"
+            class="btn btn-warning ">Modificar</button>
+        </label>
+        <label class="custom-radio boton">
+          <button type="button" name="button" value="eliminar" (click)="seleccionar($event)"
+            class="btn btn-warning ">Eliminar</button>
+        </label>
+        <br>
+      </div>
+
+      <!-- Un vez dado en alguna de las tres opciones del menu, compravara si concide con "crear" en caso que si entrara en este if, si no pasara al siguente.  -->
+      <div class="container" *ngIf="container==='crear'">
+        <form>
+          <h3><span class="theme_color">Crear </span>evento</h3>
+          <br>
+          <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" class="form-control" #nom name="evento" placeholder="Escriba el numbre del evento" required />
+          </div>
+          <!-- Para printar el error  -->
+          <div [ngSwitch]="comprovacion">
+            <div *ngSwitchCase="'No puede dejar el capo vacio'" class="error">No puede dejar el capo vacio.</div>
+          </div>
+
+
+          <div class="form-group">
+            <label>Descripción:</label>
+            <textarea type="text" class="form-control" #desc name="descrip" minlength="2" placeholder="Escriba la descripción del evento" required></textarea>
+          </div>
+          <!-- Para printar el error  -->
+          <div [ngSwitch]="minimo2letras">
+            <div *ngSwitchCase="'La descripcion tiene que ser como mínimo una palabra de dos o mas letras.'" class="error">La descripcion tiene que ser como mínimo una palabra de dos o más letras.</div>
+          </div>
+
+          <div class="form-group">
+            <label>Ubicación:</label>
+            <input type="text" class="form-control" #ubicacion name="ubicacion" placeholder="Escriba la ubicación del evento" required />
+          </div>
+          <!-- Para printar el error  -->
+          <div [ngSwitch]="comprovacion">
+            <div *ngSwitchCase="'No puede dejar el capo vacio'" class="error">No puede dejar el capo vacio.</div>
+          </div>
+
+          <div class="form-group">
+            <label>Correo:</label>
+            <input type="text" class="form-control" #correo name="email" placeholder="Escriba un correo de contacto" />
+          </div>
+          <!-- Para printar el error  -->
+          <div [ngSwitch]="errorcorreo">
+            <div *ngSwitchCase="'El correo necessita como minimo el caracter: @'" class="error">El correo necessita como minimo el caracter: @</div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label><input type="checkbox" id="gridCheck" required> He leído y acepto los términos y condiciones de Eventos
+              S.L.</label>
+          </div>
+
+          <!-- Finalmente, enviamos los valores a "registrar" para despues ponerlos en el array  -->
+          <button type="button" (click)="registrar(nom.value, desc.value, ubicacion.value, correo.value)" value="Añadir"
+            name="submit" id="submit" class="btn btn-outline-warning">CREAR</button>
+          <br><br><br><br><br>
+        </form>
+      </div>
+      <!-- MODIFICAR  -->
+      <div class="container" *ngIf="container === 'modificar'">
+        <div class="App">
+          <div class="vertical-center">
+            <div class="inner-block">
+              <form>
+                <h3><span class="theme_color">Modificar </span>evento</h3>
+                <br>
+                <div class="form-group">
+                  <label>Nombre:</label>
+                  <input type="text" class="form-control" #nom name="evento"
+                    placeholder="Escriba el nombre del Evento que quieres modificar" required />
                 </div>
-                <ul class="list-inline mt-auto">
-                  <li class="list-inline-item"> <strong>Ubicacion :</strong></li>
-                  <li class="list-inline-item"><i class="fas fa-user"></i>{{event.ubicacionEvento}}</li>
-                  <li class="list-inline-item"> <strong>Reserva :</strong></li>
-                  <li class="list-inline-item"><i class="fas fa-user"></i>{{event.contactoEvento}}</li>
-                </ul>
-              </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea type="text" class="form-control" #desc name="descrip" minlength="2" required></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>Ubicación:</label>
+                  <input type="text" class="form-control" #ubicacion name="ubicacion" required />
+                </div>
+
+                <div class="form-group">
+                  <label>Correo:</label>
+                  <input type="email" class="form-control" #correo name="email" />
+                </div>
+
+                <div class="form-group">
+                  <label><input type="checkbox" id="gridCheck"> He leído y acepto los términos y condiciones de Eventos
+                    S.L.</label>
+                </div>
+
+                <button type="button" (click)="modificar(nom.value, desc.value, ubicacion.value, correo.value)"
+                  value="Añadir" name="submit" id="submit" class="btn btn-outline-warning">MODIFICAR</button> <!-- Enviamos los valores -->
+                <br><br><br><br><br><br>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELIMINAR  -->
+      <div class="container" *ngIf="container === 'eliminar'">
+        <div class="App">
+          <div class="vertical-center">
+            <div class="inner-block">
+              <form>
+                <h3><span class="theme_color">Eliminar </span>evento</h3>
+                <br>
+                <div class="form-group">
+                  <label>Nombre:</label><!-- Pedimos el nombre delevento para encontrarlo en la array y elimanrlo -->
+                  <input type="text" class="form-control" #nom name="evento"
+                    placeholder="Escriba el nombre del Evento que quieres borrar" required />
+                </div>
+                <button type="button" (click)="eliminar(nom.value)" value="eliminar" name="submit" id="submit"
+                  class="btn btn-outline-warning">ELIMINAR</button> <!-- Enviamos el nombre del evento a la funcion elminar para asi en el .ts lo pueda elimanar -->
+                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<div class="container ">
-  <br><br><br>
-  <label class="radio boton">
-    <button type="button" name="button" value="add" (click)="elegirAccion($event)" class="btn btn-warning ">Registrar
-      evento</button>
-  </label>
-  <label class="custom-radio boton">
-    <button type="button" name="button" value="edit" (click)="elegirAccion($event)" class="btn btn-warning ">Editar
-      evento</button>
-  </label>
-  <label class="custom-radio boton">
-    <button type="button" name="button" value="delete" (click)="elegirAccion($event)" class="btn btn-warning ">Borrar
-      evento</button>
-  </label>
 </div>
-
-
-<section class="sec1">
-
-  <div class="container" *ngIf="container === 'add'">
-    <div class="App">
-      <div class="vertical-center">
-        <div class="inner-block">
-          <form>
-            <h3>Registrar evento</h3>
-            <div class="form-group">
-              <label>Nombre del evento</label>
-              <input type="text" class="form-control" #evento name="evento" />
-            </div>
-
-            <div class="form-group">
-              <label>Descripcion del evento</label>
-              <textarea type="text" class="form-control" #descrip name="descrip"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label>Dia</label>
-              <select name="dia" class="form-control" #dia>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Mes</label>
-              <select name="mes" class="form-control" #mes>
-                <option value="Ene">Ene</option>
-                <option value="Feb">Feb</option>
-                <option value="Mar">Mar</option>
-                <option value="Abr">Abr</option>
-                <option value="May">May</option>
-                <option value="Jun">Jun</option>
-                <option value="Jul">Jul</option>
-                <option value="Ago">Ago</option>
-                <option value="Set">Set</option>
-                <option value="Oct">Oct</option>
-                <option value="Nov">Nov</option>
-                <option value="Dic">Dic</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Ubicacion</label>
-              <input type="text" class="form-control" name="ubicacion" #ubicacion />
-            </div>
-
-            <div class="form-group">
-              <label>Correo</label>
-              <input type="email" class="form-control" name="email" #email />
-            </div>
-
-            <div class="form-group">
-              <label><input type="checkbox" id="input-check" #check>Aceptar Condiciones</label>
-            </div>
-
-            <button type="button"
-              (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)"
-              value="Añadir" name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar
-              evento</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="container" *ngIf="container === 'edit'">
-    <div class="App">
-      <div class="vertical-center">
-        <div class="inner-block">
-          <form>
-            <h3>Editar evento</h3>
-            <div class="form-group">
-              <label>Nombre del evento</label>
-              <select name="name" class="form-control">
-                <option value="{{event.nombreEvento}}" #evento *ngFor="let event of events">{{event.nombreEvento}}
-                </option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Descripcion del evento</label>
-              <textarea type="text" class="form-control" #descrip name="descrip"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label>Dia</label>
-              <select name="dia" class="form-control" #dia>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-
-
-            <div class="form-group">
-              <label>Mes</label>
-              <select name="mes" class="form-control" #mes>
-                <option value="Ene">Ene</option>
-                <option value="Feb">Feb</option>
-                <option value="Mar">Mar</option>
-                <option value="Abr">Abr</option>
-                <option value="May">May</option>
-                <option value="Jun">Jun</option>
-                <option value="Jul">Jul</option>
-                <option value="Ago">Ago</option>
-                <option value="Set">Set</option>
-                <option value="Oct">Oct</option>
-                <option value="Nov">Nov</option>
-                <option value="Dic">Dic</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Ubicacion</label>
-              <input type="text" class="form-control" name="ubicacion" #ubicacion />
-            </div>
-
-            <div class="form-group">
-              <label>Correo</label>
-              <input type="email" class="form-control" name="email" #email />
-            </div>
-
-            <div class="form-group">
-              <label><input type="checkbox" #check>Aceptar condiciones del contrato</label>
-            </div>
-
-            <button type="button"
-              (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)"
-              value="Añadir" name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar
-              evento</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
-
-  </div>
-
-  <div class="container" *ngIf="container === 'delete'">
-    <div class="App">
-      <div class="vertical-center">
-        <div class="inner-block">
-          <form>
-            <h3>Borrar evento</h3>
-            <div class="form-group">
-              <label>Nombre del evento</label>
-              <select name="name" class="form-control">
-                <option value="{{event.nombreEvento}}" #evento *ngFor="let event of events">{{event.nombreEvento}}
-                </option>
-              </select>
-            </div>
-
-            <button type="button"
-              (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)"
-              value="Añadir" name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Borrar
-              evento</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-
-
-
-</section>

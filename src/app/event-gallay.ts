@@ -1,11 +1,10 @@
 export class EventGallery {
+  evento: any;
 
   constructor(
-    public nombreEvento: string,
-    public descripcionEvento: string,
-    public dia: string,
-    public mes: string,
-    public ubicacionEvento: string,
-    public contactoEvento: string,
+    public nombre: string,
+    public desc: string,
+    public ubicacion: string,
+    public contacto: string,
   ){}
 }

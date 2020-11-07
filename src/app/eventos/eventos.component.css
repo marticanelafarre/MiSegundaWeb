@@ -9,3 +9,18 @@
 .boton{
   padding: 20px;
 }
+
+.eventos{
+  text-align: center;
+  display: block;
+}
+
+.col{
+  padding-left: 30px;
+}
+
+.error{
+  color: red;
+  font-size: small;
+  margin-top: -19px;
+}
