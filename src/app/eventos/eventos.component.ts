@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventGallery } from '../event-gallay';
+import {FormGroup} from '@angular/forms';
+import { ok } from 'assert';
 
 @Component({
   selector: 'app-events',
@@ -13,12 +15,15 @@ export class EventosComponent implements OnInit {
   accion: String;
 
   public container: string;
+  miform: FormGroup;
 
   comprovacion: string = "";
   minimo2letras: string = "";
   errorcorreo: string = "";
+  checkerror: string = "";
   // quitarerror: string = "";
-  correo= /@/;
+  correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
   constructor() { }
 
@@ -38,24 +43,26 @@ export class EventosComponent implements OnInit {
     }
   }
 
+
+
   /* Prinatar errores y registrar en el array */
-  registrar(nom, desc, ubicacion, correo) {
+  registrar(nom, desc, ubicacion, mail, check) {
 
     if(nom.length==0){
       this.comprovacion="No puede dejar el capo vacio";
-    }
-
-    if(desc.length<3){
+    }else if(desc.length<3){
       this.minimo2letras="La descripcion tiene que ser como mínimo una palabra de dos o mas letras.";
-    }
-
-    if(!correo.match(this.correo)){
+    }else if(!mail.match(this.correo)){
       this.errorcorreo= "El correo necessita como minimo el caracter: @";
+    }else if(!check.value){
+      this.checkerror= "ok";
+      if((nom && desc && ubicacion && mail && check)){
+        this.events.push(new EventGallery(nom, desc, ubicacion, mail));//agregamos
+        this.miform.reset;
+      }
     }
 
-    if((nom && desc && ubicacion && correo)){
-      this.events.push(new EventGallery(nom, desc, ubicacion, correo));//agregamos
-    }
+
 
   }
 
@@ -66,7 +73,7 @@ export class EventosComponent implements OnInit {
       if(this.events[i].nombre == nom){
         this.events.splice( i, 1 );
         this.events.push(new EventGallery(nom, desc, ubicacion, correo));
-      }
+    }
     }
 }
 

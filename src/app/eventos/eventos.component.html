@@ -50,7 +50,7 @@
 
       <!-- Un vez dado en alguna de las tres opciones del menu, compravara si concide con "crear" en caso que si entrara en este if, si no pasara al siguente.  -->
       <div class="container" *ngIf="container==='crear'">
-        <form>
+        <form [formGroup]="miform">
           <h3><span class="theme_color">Crear </span>evento</h3>
           <br>
           <div class="form-group">
@@ -91,12 +91,17 @@
           </div>
           <br><br>
           <div class="form-group">
-            <label><input type="checkbox" id="gridCheck" required> He leído y acepto los términos y condiciones de Eventos
+            <label><input type="checkbox" #check id="gridCheck" > He leído y acepto los términos y condiciones de Eventos
               S.L.</label>
           </div>
 
+          <div [ngSwitch]="checkerror">
+            <div *ngSwitchCase="'ok'" class="error">El checkbox tiene que estar seleccionado.</div>
+          </div>
+
+          <br>
           <!-- Finalmente, enviamos los valores a "registrar" para despues ponerlos en el array  -->
-          <button type="button" (click)="registrar(nom.value, desc.value, ubicacion.value, correo.value)" value="Añadir"
+          <button type="button" (click)="registrar(nom.value, desc.value, ubicacion.value, correo.value, check.value)" value="Añadir"
             name="submit" id="submit" class="btn btn-outline-warning">CREAR</button>
           <br><br><br><br><br>
         </form>

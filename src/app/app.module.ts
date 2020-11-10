@@ -11,6 +11,7 @@ import { DetallMembreComponent } from './detall-membre/detall-membre.component';
 import { ElementMembreComponent } from './element-membre/element-membre.component';
 import { ListaMiembrosComponent } from './lista-miembros/lista-miembros.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { EventosComponent } from './eventos/eventos.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
